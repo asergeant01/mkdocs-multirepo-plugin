@@ -21,6 +21,8 @@ else
   url_to_use="$url"
 fi
 
+echo "Cloning $url_to_use" >&2
+
 git clone --branch "$branch" --depth 1 --filter=blob:none --sparse $url_to_use "$name" || exit 1
 cd "$name"
 git sparse-checkout set --no-cone ${dirs[*]}
